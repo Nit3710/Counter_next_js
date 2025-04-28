@@ -36,32 +36,39 @@ const CardList: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center gap-8 p-8">
-            <div className="flex gap-5">
-                <button
-                    className="w-10 h-10 rounded-full flex justify-center items-center bg-blue-400 text-white text-2xl"
-                    onClick={() => updateCount("+")}
-                >
-                    +
-                </button>
-                <button
-                    className="w-10 h-10 rounded-full flex justify-center items-center bg-red-400 text-white text-2xl"
-                    onClick={() => updateCount("-")}
-                >
-                    -
-                </button>
-            </div>
-            <div className="flex flex-wrap gap-6 justify-center">
-                {cardsData.map((card, index) => (
-                    <Card
-                        key={card.id}
-                        id={card.id}
-                        name={card.name}
-                        count={counts[index]}
-                        onSelect={handleCardSelect}
-                        isSelected={selectedCardId === card.id}
-                    />
-                ))}
+        <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Card Dashboard</h2>
+                    <div className="flex justify-center gap-4">
+                        <button
+                            className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 
+                            transition-colors duration-300 flex items-center gap-2 shadow-md"
+                            onClick={() => updateCount("+")}
+                        >
+                            <span className="text-xl">+</span> Increment
+                        </button>
+                        <button
+                            className="px-6 py-3 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 
+                            transition-colors duration-300 flex items-center gap-2 shadow-md"
+                            onClick={() => updateCount("-")}
+                        >
+                            <span className="text-xl">-</span> Decrement
+                        </button>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {cardsData.map((card, index) => (
+                        <Card
+                            key={card.id}
+                            id={card.id}
+                            name={card.name}
+                            count={counts[index]}
+                            onSelect={handleCardSelect}
+                            isSelected={selectedCardId === card.id}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
